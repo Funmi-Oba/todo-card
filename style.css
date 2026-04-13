@@ -1,0 +1,267 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /* Centers the card on the page */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Soft background so the card stands out */
+  background-color: #f0f2f5;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+}
+
+.todo-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border-left: 5px solid #6c63ff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.todo-card.completed {
+  opacity: 0.6;
+  border-left-color: #a0aec0;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* space between checkbox, title, and badge */
+  margin-bottom: 12px;
+}
+
+.toggle-label input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* The pill shaped background track */
+.toggle-track {
+  width: 40px;
+  height: 22px;
+  background-color: #d1d5db; /* grey when off */
+  border-radius: 999px;
+  position: relative;
+  transition: background-color 0.25s ease;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+}
+
+/* The sliding circle inside the track */
+.toggle-thumb {
+  width: 18px;
+  height: 18px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  position: absolute;
+  left: 2px;
+  transition: left 0.25s ease;
+}
+
+
+.toggle-label input[type="checkbox"]:checked ~ .toggle-track {
+  background-color: #6c63ff;
+}
+
+.toggle-label input[type="checkbox"]:checked ~ .toggle-track .toggle-thumb {
+  left: calc(100% - 20px); /* slides to the right */
+}
+
+/* Focus ring for keyboard accessibility */
+.toggle-label input[type="checkbox"]:focus ~ .toggle-track {
+  outline: 2px solid #6c63ff;
+  outline-offset: 2px;
+}
+
+.todo-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a202c;
+  flex: 1; /* takes up remaining space in the header row */
+  transition: color 0.3s ease;
+}
+
+.todo-card.completed .todo-title {
+  text-decoration: line-through;
+  color: #a0aec0;
+}
+
+.priority-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px; /* pill shape */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.priority-high {
+  background-color: #fff5f5;
+  color: #e53e3e;
+}
+
+.priority-medium {
+  background-color: #fffbeb;
+  color: #d69e2e;
+}
+
+.priority-low {
+  background-color: #f0fff4;
+  color: #38a169;
+}
+
+.todo-description {
+  font-size: 0.875rem;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.status-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.status-inprogress {
+  background-color: #ebf8ff;
+  color: #3182ce;
+}
+
+.status-pending {
+  background-color: #faf5ff;
+  color: #805ad5;
+}
+
+.status-done {
+  background-color: #f0fff4;
+  color: #38a169;
+}
+
+.time-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap; /* wraps on small screens */
+}
+
+.due-date {
+  font-size: 0.8rem;
+  color: #718096;
+}
+
+.time-remaining {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.time-remaining.overdue {
+  background-color: #fff5f5;
+  color: #e53e3e;
+}
+
+.time-remaining.soon {
+  background-color: #fffbeb;
+  color: #d69e2e;
+}
+.time-remaining.urgent {
+  background-color: #fffbeb;
+  color: #d69e2e;
+}
+.time-remaining.safe {
+  background-color: #f0fff4;
+  color: #38a169;
+}
+
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none; /* removes bullet points */
+  margin-bottom: 20px;
+}
+
+.tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background-color: #edf2f7;
+  color: #4a5568;
+  transition: background-color 0.2s ease;
+}
+
+.tag:hover {
+    background-color: #6c63ff;
+  color: #ffffff;
+}
+.card-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end; /* pushes buttons to the right */
+}
+
+/* Shared styles for both buttons */
+.btn-edit,
+.btn-delete {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-edit:active,
+.btn-delete:active {
+  transform: scale(0.96);
+}
+
+.btn-edit {
+  background-color: #ebf8ff;
+  color: #3182ce;
+}
+
+.btn-edit:hover {
+  background-color: #bee3f8;
+}
+
+.btn-delete {
+  background-color: #fff5f5;
+  color: #e53e3e;
+}
+
+.btn-delete:hover {
+  background-color: #fed7d7;
+}

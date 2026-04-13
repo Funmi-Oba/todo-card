@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo Card</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <article data-testid="test-todo-card" class="todo-card">
+      <div class="card-header">
+        <label
+          for="todo-complete"
+          class="toggle-label"
+          aria-label="Mark task as complete"
+        >
+          <input
+            type="checkbox"
+            id="todo-complete"
+            data-testid="test-todo-complete-toggle"
+            aria-label="Mark task as complete"
+          />
+          <span class="toggle-track">
+            <span class="toggle-thumb"></span>
+          </span>
+        </label>
+        <h2 data-testid="test-todo-title" class="todo-title">
+          Redesign the onboarding flow
+        </h2>
+        <span
+          data-testid="test-todo-priority"
+          class="priority-badge priority-high"
+        >
+          ❗High
+        </span>
+      </div>
+
+      <p data-testid="test-todo-description" class="todo-description">
+        Revamp the user onboarding screens to improve activation rate and reduce
+        drop-off during signup.
+      </p>
+
+      <span
+        data-testid="test-todo-status"
+        class="status-badge status-inprogress"
+        aria-label="Task status"
+      >
+        In Progress
+      </span>
+
+      <div class="time-info">
+        <time data-testid="test-todo-due-date" class="due-date" datetime="">
+          Due Apr 16, 2026
+        </time>
+        <time
+          data-testid="test-todo-time-remaining"
+          class="time-remaining"
+          datetime=""
+        >
+          Due in 5 days
+        </time>
+      </div>
+
+      <ul
+        data-testid="test-todo-tags"
+        class="tags-list"
+        role="list"
+        aria-label="Task categories"
+      >
+        <li data-testid="test-todo-tag-design" class="tag">Design</li>
+        <li data-testid="test-todo-tag-ux" class="tag">UX</li>
+        <li data-testid="test-todo-tag-frontend" class="tag">Frontend</li>
+      </ul>
+
+      <div class="card-actions">
+        <button
+          data-testid="test-todo-edit-button"
+          class="btn-edit"
+          aria-label="Edit task"
+        >
+          Edit
+        </button>
+
+        <button
+          data-testid="test-todo-delete-button"
+          class="btn-delete"
+          aria-label="Delete task"
+        >
+          Delete
+        </button>
+      </div>
+    </article>
+
+    <script src="script.js"></script>
+  </body>
+</html>
