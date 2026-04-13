@@ -13,7 +13,7 @@ A high-fidelity, interactive Todo Item Card built with semantic HTML, vanilla CS
 ## How to Run Locally
 
 1. Clone the repository:
-   git clone https://github.com/yourusername/todo-card.git
+   git clone https://github.com/Funmi-Oba/todo-card.git
 
 2. Open the project folder:
    cd todo-card
