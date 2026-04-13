@@ -3,10 +3,10 @@
 A high-fidelity, interactive Todo Item Card built with semantic HTML, vanilla CSS, and vanilla JavaScript. Built as a Stage 0 frontend task for my internship.
 
 ## Live Demo
-[View Live](https://yourusername.github.io/todo-card)
+[View Live](https://funmi-oba.github.io/todo-card/)
 
 ## GitHub Repo
-[View Code](https://github.com/yourusername/todo-card)
+[View Code](https://github.com/Funmi-Oba/todo-card)
 
 ---
 
