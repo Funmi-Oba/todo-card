@@ -27,7 +27,9 @@ body {
   max-width: 480px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   border-left: 5px solid #6c63ff;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .todo-card.completed {
@@ -75,12 +77,11 @@ body {
   height: 18px;
   background-color: #ffffff;
   border-radius: 50%;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   position: absolute;
   left: 2px;
   transition: left 0.25s ease;
 }
-
 
 .toggle-label input[type="checkbox"]:checked ~ .toggle-track {
   background-color: #6c63ff;
@@ -222,7 +223,7 @@ body {
 }
 
 .tag:hover {
-    background-color: #6c63ff;
+  background-color: #6c63ff;
   color: #ffffff;
 }
 .card-actions {
@@ -240,7 +241,9 @@ body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
 }
 
 .btn-edit:active,
@@ -264,4 +267,301 @@ body {
 
 .btn-delete:hover {
   background-color: #fed7d7;
+}
+
+/* ================================
+   UTILITY CLASSES
+================================ */
+
+/* Completely hides an element */
+.hidden {
+  display: none !important;
+}
+
+/*
+  Visually hidden but still readable
+  by screen readers.
+  Never use display:none for this —
+  that hides it from screen readers too.
+*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.edit-heading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  background-color: #6c63ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+/* ================================
+   PRIORITY INDICATOR
+   Empty <span> that gets colored
+   based on priority class added by JS.
+================================ */
+.priority-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%; /* makes it a circle/dot */
+  flex-shrink: 0;
+  transition: background-color 0.3s ease;
+}
+
+.priority-indicator.priority-high {
+  background-color: #e53e3e;
+}
+
+.priority-indicator.priority-medium {
+  background-color: #d69e2e;
+}
+
+.priority-indicator.priority-low {
+  background-color: #38a169;
+}
+
+/*
+  Card left border also changes color
+  based on priority — a stronger visual signal.
+*/
+.todo-card.priority-high {
+  border-left-color: #e53e3e;
+}
+
+.todo-card.priority-medium {
+  border-left-color: #d69e2e;
+}
+
+.todo-card.priority-low {
+  border-left-color: #38a169;
+}
+
+/* ================================
+   STATUS CONTROL DROPDOWN
+================================ */
+.status-control-wrapper {
+  margin-bottom: 14px;
+  /* display: flex; */
+  align-items: center;
+  gap: 10px;
+}
+.status-arrow {
+  color: #a0aec0;
+  font-size: 0.85rem;
+}
+.status-control {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background-color: #f7fafc;
+  color: #4a5568;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  appearance: none; /* removes default browser arrow */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234a5568' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px; /* space for the arrow icon */
+}
+
+.status-control:hover {
+  border-color: #6c63ff;
+}
+
+.status-control:focus {
+  outline: 2px solid #6c63ff;
+  outline-offset: 2px;
+}
+
+/* ================================
+   EXPAND / COLLAPSE
+================================ */
+
+/*
+  The collapsible section clips content
+  when collapsed using max-height.
+  transition makes it animate smoothly.
+*/
+.collapsible-section {
+  overflow: hidden;
+  max-height: 48px; /* collapsed — shows roughly 2 lines */
+  transition: max-height 0.3s ease;
+}
+
+.collapsible-section.expanded {
+  max-height: 500px; /* expanded — enough for any description */
+}
+
+.expand-toggle {
+  background: none;
+  border: none;
+  color: #6c63ff;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 2px 0;
+  margin-bottom: 12px;
+  transition: color 0.2s ease;
+}
+
+.expand-toggle:hover {
+  color: #553c9a;
+}
+
+.expand-toggle:focus {
+  outline: 2px solid #6c63ff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ================================
+   OVERDUE INDICATOR
+================================ */
+.overdue-indicator {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #e53e3e;
+  background-color: #fff5f5;
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+/*
+  When card is overdue, add a red
+  background tint to the whole card.
+*/
+.todo-card.is-overdue {
+  background-color: #fffafa;
+  border-left-color: #e53e3e;
+}
+
+/* ================================
+   EDIT FORM
+================================ */
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 8px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #4a5568;
+}
+
+.form-input {
+  font-size: 0.875rem;
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  color: #1a202c;
+  background-color: #f7fafc;
+  transition: border-color 0.2s ease;
+  font-family: inherit; /* ensures textarea uses same font as card */
+  width: 100%;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #6c63ff;
+  background-color: #ffffff;
+}
+
+.form-textarea {
+  resize: vertical; /* user can resize vertically only */
+  min-height: 80px;
+}
+
+.form-select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%234a5568' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  padding-top: 8px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.btn-save {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #6c63ff;
+  color: #ffffff;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.btn-save:hover {
+  background-color: #553c9a;
+}
+
+.btn-save:active {
+  transform: scale(0.96);
+}
+
+.btn-cancel {
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #edf2f7;
+  color: #4a5568;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.btn-cancel:hover {
+  background-color: #e2e8f0;
+}
+
+.btn-cancel:active {
+  transform: scale(0.96);
+}
+
+/* ================================
+   CARD HOVER
+   Keep the lift from Stage 0
+================================ */
+.todo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
